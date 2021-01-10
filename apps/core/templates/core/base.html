@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} Times</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+    <div id="navbar-app">
+        <navbar>
+            <navbar-brand>
+                <a href="/" class="navbar-item">
+                    <strong>Time Trackig</strong>
+                </a>
+            </navbar-brand>
+            <navbar-menu>
+                <div class="navbar-end">
+                    <a href="#" class="navbar-item">Plans</a>
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="#" class="button is-success">
+                                <strong>Sign Up</strong>
+                            </a>
+                            <a href="#" class="button">
+                                Log In
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </navbar-menu>
+        </navbar>
+    </div>
+
+    <section class="section">
+        {% block content %}
+        {% endblock %}
+    </section>
+    <footer class="footer">
+        <div class="columns is-multiline">
+            <div class="column is-4">
+                <h2 class="subtitle">
+                    Timing
+                </h2>
+            </div>
+            <div class="column is-offset-6 is-2">
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Terms of services</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
