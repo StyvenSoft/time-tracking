@@ -1,3 +1,8 @@
+# Import functionality from django
+
 from django.shortcuts import render
 
-# Create your views here.
+# Views
+
+def frontpage(request):
+    return render(request, 'core/frontpage.html')
