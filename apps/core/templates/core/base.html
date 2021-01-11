@@ -16,7 +16,7 @@
             </div>
             <div class="navbar-menu">
                 <div class="navbar-end">
-                    <a href="#" class="navbar-item">Plans</a>
+                    <a href="{% url 'plans' %}" class="navbar-item">Plans</a>
                     <div class="navbar-item">
                         <div class="buttons">
                             <a href="#" class="button is-success">
@@ -46,12 +46,12 @@
             <div class="column is-offset-6 is-2">
                 <ul>
                     <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="{% url 'privacy'%}">Privacy policy</a></li>
                     <li><a href="#">Terms of services</a></li>
                 </ul>
             </div>
             <div class="column is-12 has-text-centered mt-6">
-                <p>Copyright (c) 2021</p>
+                <p>© Copyright 2021 - Styvensoft</p>
             </div>
         </div>
     </footer>
