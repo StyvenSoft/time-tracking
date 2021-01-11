@@ -1,5 +1,7 @@
 {% extends 'core/base.html' %}
 
+{% load static %}
+
 {% block title %} Home | {% endblock %}
 
 {% block content %}
@@ -11,10 +13,35 @@
                 Welcome to time tracking
             </h1>
             <h2 class="subtitle">
-                Time traking make simple
+                A simple time tracker and timesheet app that lets you track work hours across projects.
             </h2>
         </div>
     </div>
 </section>
+
+<div class="container">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+            <div class="columns is-align-items mt-6">
+                <div class="column is-4 image">
+                    <img src="{% static 'images/feacture-1.png' %}" alt="Feactures">
+                </div>
+                <div class="column is-8 text">
+                    <h2 class="subtitle">Budgeting time better</h2>
+                    <p>Having accurate data on the actual spending of time on specific activities, greatly improves the ability to project new tasks and, above all, gain credibility in the hourly budgets that you prepare for potential clients.</p>
+                </div>
+            </div>
+            <div class="columns is-align-items mt-6">
+                <div class="column is-8 text">
+                    <h2 class="subtitle">Helps to improve concentration</h2>
+                    <p>Time Tracking improves concentration on a single task during a period that you have defined for this purpose. This will influence the increase in productivity.</p>
+                </div>
+                <div class="column is-4 image">
+                    <img src="{% static 'images/feacture-2.png' %}" alt="Feactures">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
