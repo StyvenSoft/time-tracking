@@ -16,10 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from apps.core.views import frontpage, privacy, plans
+from apps.userprofile.views import signup
 
 urlpatterns = [
     path('', frontpage, name='frontpage'),
     path('privacy/', privacy, name='privacy'),
     path('plans/', plans, name='plans'),
     path('admin/', admin.site.urls),
+
+    # Auth
+    path('signup/', signup, name='signup'),
 ]
