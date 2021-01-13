@@ -6,7 +6,7 @@
 
 <div class="columns" id="signup-app">
     <div class="column is-6 is-offset-3">
-        <form method="post" class="mt-6" action="." v-on:submit="validateForm" >
+        <form method="post" class="mt-6" action="." v-on:submit="validateForm" novalidate>
             {% csrf_token %}
 
             {% if form.errors %}
@@ -14,7 +14,7 @@
                     {{ form.non_field_errors }}
 
                     {% for field in form %}
-                        {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
+                    {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
                     {% endfor %}
                 </div>
             {% endif %}
@@ -28,48 +28,30 @@
             <div class="field">
                 <label>E-mail</label>
                 <div class="control">
-                    <input 
-                        type="email" 
-                        name="username" 
-                        class="input" 
-                        id="id_username" 
-                        v-model="username"
-                    >
+                    <input type="email" name="username" class="input" id="id_username" v-model="username">
                 </div>
             </div>
 
             <div class="field">
                 <label>Password</label>
                 <div class="control">
-                    <input 
-                        type="password" 
-                        name="password1" 
-                        class="input" 
-                        id="id_password1" 
-                        v-model="password1"
-                    >
+                    <input type="password" name="password1" class="input" id="id_password1" v-model="password1">
                 </div>
             </div>
 
             <div class="field">
                 <label>Repeat Password</label>
                 <div class="control">
-                    <input 
-                        type="password" 
-                        name="password2" 
-                        class="input" 
-                        id="id_password2" 
-                        v-model="password2"
-                    >
+                    <input type="password" name="password2" class="input" id="id_password2" v-model="password2">
                 </div>
             </div>
 
-            <ul class="password_help-text">
-                <li v-is="password1.length < 8">
-                    Your password must contain at least 8 characters.
+            <ul class="password_help-text mb-2">
+                <li v-if="password1.length < 8">
+                    <em>* Your password must contain at least 8 characters.</em>
                 </li>
-                <li v-is="!isNaN(password1)">
-                    Your password can't be entirely numeric.
+                <li v-if="!isNaN(password1)">
+                    <em>* Your password can't be entirely numeric.</em>
                 </li>
             </ul>
 
@@ -84,4 +66,21 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const SignupApp = {
+        data() {
+            return {
+                username: '',
+                password1: '',
+                password2: '',
+                errors: [],
+            }
+        },
+        delimiters: ['[[', ']]'],
+    }
+    Vue.createApp(SignupApp).mount('#signup-app')
+</script>
 {% endblock %}
