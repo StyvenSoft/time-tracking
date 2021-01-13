@@ -3,4 +3,85 @@
 {% block title %} Sign Up | {% endblock %}
 
 {% block content %}
+
+<div class="columns" id="signup-app">
+    <div class="column is-6 is-offset-3">
+        <form method="post" class="mt-6" action="." v-on:submit="validateForm" >
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <div class="notification is-danger">
+                    {{ form.non_field_errors }}
+
+                    {% for field in form %}
+                        {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="notification is-danger" v-if="errors.length">
+                <p v-for="error in errors">
+                    [[ error ]]
+                </p>
+            </div>
+
+            <div class="field">
+                <label>E-mail</label>
+                <div class="control">
+                    <input 
+                        type="email" 
+                        name="username" 
+                        class="input" 
+                        id="id_username" 
+                        v-model="username"
+                    >
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <div class="control">
+                    <input 
+                        type="password" 
+                        name="password1" 
+                        class="input" 
+                        id="id_password1" 
+                        v-model="password1"
+                    >
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Repeat Password</label>
+                <div class="control">
+                    <input 
+                        type="password" 
+                        name="password2" 
+                        class="input" 
+                        id="id_password2" 
+                        v-model="password2"
+                    >
+                </div>
+            </div>
+
+            <ul class="password_help-text">
+                <li v-is="password1.length < 8">
+                    Your password must contain at least 8 characters.
+                </li>
+                <li v-is="!isNaN(password1)">
+                    Your password can't be entirely numeric.
+                </li>
+            </ul>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-success">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

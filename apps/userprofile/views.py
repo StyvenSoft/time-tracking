@@ -1,6 +1,6 @@
-from django.contrib.auth from login
-from django.contrib.auth import UserCreationForm
-from django.contrib.auth import User
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 # Import models
