@@ -80,6 +80,44 @@
             }
         },
         delimiters: ['[[', ']]'],
+        methods: {
+            validateForm(e) {
+                this.errors = []
+
+                if (!this.validateEmail(this.username)) {
+                    this.errors.push('You e-mail address in not valid!')
+                }
+
+                if (this.password1 === '') {
+                    this.errors.push('Your password is missing')
+                }
+
+                if (this.password1.length < 8) {
+                    this.errors.push('Your password must be at least 8 characterers')
+                }
+
+                if (!isNaN(this.password1)) {
+                    this.errors.push('Your password can\'t be enterity numeric')
+                }
+
+                if (this.password1 !== this.password2) {
+                    this.errors.psuh('Your password does not match!')
+                }
+
+                if (this.errors.length) {
+                    e.preventDefault();
+                    return false;
+                } else {
+                    return true;
+                } 
+            },
+            validateEmail(email) {
+            if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)) {
+                return true
+            }
+                return false
+            },            
+        },
     }
     Vue.createApp(SignupApp).mount('#signup-app')
 </script>

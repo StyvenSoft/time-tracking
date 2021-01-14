@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 
 # Import models
 
-from .models import UserProfile
+from .models import Userprofile
 
 # Views
 
