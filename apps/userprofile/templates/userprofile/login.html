@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Log In | {% endblock %}
+
+{% block content %}
+
+<div class="columns" id="signup-app">
+    <div class="column is-6 is-offset-3">
+        <form method="post" class="mt-6" action=".">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <div class="notification is-danger">
+                    {{ form.non_field_errors }}
+
+                    {% for field in form %}
+                    {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <div class="field">
+                <label>E-mail</label>
+                <div class="control">
+                    <input type="email" name="username" class="input" id="id_username">
+                </div>
+            </div>
+
+            <div class="field">
+                <label>Password</label>
+                <div class="control">
+                    <input type="password" name="password" class="input" id="id_password">
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-success">
+                        Log In
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
