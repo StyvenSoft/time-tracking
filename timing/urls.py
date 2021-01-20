@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
-from django.urls import path
+from django.urls import path, include
 from apps.core.views import frontpage, privacy, plans
-from apps.userprofile.views import signup, myaccount, edit_profile
+from apps.userprofile.views import signup
 
 urlpatterns = [
     path('', frontpage, name='frontpage'),
@@ -29,6 +29,5 @@ urlpatterns = [
     path('signup/', signup, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='userprofile/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('myaccount/', myaccount, name='myaccount'),
-    path('myaccount/edit_profile', edit_profile, name='edit_profile'),
+    path('myaccount/', include('apps.userprofile.urls')),
 ]

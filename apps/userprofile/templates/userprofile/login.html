@@ -10,27 +10,33 @@
             {% csrf_token %}
 
             {% if form.errors %}
-                <div class="notification is-danger">
-                    {{ form.non_field_errors }}
+            <div class="notification is-danger">
+                {{ form.non_field_errors }}
 
-                    {% for field in form %}
-                    {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
-                    {% endfor %}
-                </div>
+                {% for field in form %}
+                {% if field.errors %}{{ field.label }}: {{ field.errors|striptags }}{% endif %}
+                {% endfor %}
+            </div>
             {% endif %}
 
             <div class="field">
                 <label>E-mail</label>
-                <div class="control">
-                    <input type="email" name="username" class="input" id="id_username">
-                </div>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" name="username" id="id_username" type="email" placeholder="Email">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                    </span>
+                </p>
             </div>
 
             <div class="field">
                 <label>Password</label>
-                <div class="control">
-                    <input type="password" name="password" class="input" id="id_password">
-                </div>
+                <p class="control has-icons-left">
+                    <input class="input" name="password" id="id_password" type="password" placeholder="Password">
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                    </span>
+                </p>
             </div>
 
             <div class="field">
