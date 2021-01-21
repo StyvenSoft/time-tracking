@@ -43,14 +43,16 @@
         </div>
     </div>
     <div class="columns is-align-items-center mt-6">
-        <div class="column is-4 is-offset-4 has-text-centered">
-            <h2 class="subtitle">
-                Let's get started
-            </h2>
-            <a href="{% url 'signup' %}" class="button is-success is-larget">
-                Get a free account
-            </a>
-        </div>
+        {% if not request.user.is_authenticated %}
+            <div class="column is-4 is-offset-4 has-text-centered">
+                <h2 class="subtitle">
+                    Let's get started
+                </h2>
+                <a href="{% url 'signup' %}" class="button is-success is-larget">
+                    Get a free account
+                </a>
+            </div>
+        {% endif %}
     </div>
 </div>
 
