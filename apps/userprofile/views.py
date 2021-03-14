@@ -6,12 +6,15 @@ from django.shortcuts import render, redirect
 # Import models
 
 from .models import Userprofile
+from apps.team.models import Team
 
 # Views
 
 @login_required
 def myaccount(request):
-    return render(request, 'userprofile/myaccount.html')
+    teams = request.user.teams.exclude(pk=request.user.userprofile.active_team_id)
+
+    return render(request, 'userprofile/myaccount.html', {'teams': teams})
 
 @login_required
 def edit_profile(request):

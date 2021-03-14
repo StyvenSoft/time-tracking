@@ -39,4 +39,36 @@
         <a href="{% url 'team:add'%}" class="button is-success">Add team</a>
     </div>
 </div>
+
+<div class="columns">
+    {% if active_team %}
+    <div class="column is-4">
+        <div class="notification has-background-success-light">
+            <h3 class="is-size-5">{{ active_team.title }}{% if active_team.created_by == request.user %}(Owner){% else %}(Member){% endif %}</h3>
+
+            <h3 class="is-size-6">Show Plan Here</h3>
+            <hr />
+
+            <a href="#" class="button is-success">Details</a>
+            {% if active_team.created_by == request.user %}
+                <a href="#" class="button is-info">Inactive Users</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% for team in teams %}
+    <div class="column is-4">
+        <div class="notification">
+            <h3 class="is-size-5">{{ team.title }}{% if team.created_by == request.user %}(Owner){% else %}(Member){% endif %}</h3>
+
+            <h3 class="is-size-6">Show Plan Here</h3>
+            <hr />
+
+            <a href="#" class="button is-success">Details</a>
+            <a href="#" class="button is-info">Activate</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 {% endblock %}
