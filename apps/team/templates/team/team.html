@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ team.title }} | {% endblock %}
+
+{% block content %}
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="{% url 'myaccount' %}">My Account</a></li>
+            <li class="is-active"><a href="{% url 'team:add' team.id %}" aria-current="page">{{ team.title }}</a></li>
+        </ul>
+
+    <div class="columns" id="team-app">
+        <div class="column is-4 is-offset-4">
+            <h1 class="title has-text-centered">{{ team.title }}</h1>
+            <hr>
+
+            <h2 class="subtitle mt-6">Members</h2>
+
+            {% for menber in team.members.all %}
+                <p>{{ member.username }}</p>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
