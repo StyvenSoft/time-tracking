@@ -10,7 +10,7 @@
         <li class="is-active"><a href="{% url 'team:team' team.id %}" aria-current="page">{{ team.title }}</a></li>
     </ul>
 
-    <div class="columns" id="team-app">
+    <div class="columns is-multiline" id="team-app">
         <div class="column is-4 is-offset-4">
             <h1 class="title has-text-centered mt-4">{{ team.title }}</h1>
             <hr>
@@ -19,9 +19,18 @@
 
 
             {% for member in team.members.all %}
-                <p>{{ member.username }}</p>
+            <p>{{ member.username }}</p>
             {% endfor %}
 
         </div>
+
+        {% if team.created_by == request.user %}
+        <div class="column">
+            <hr>
+
+            <h3 class="subtitle">Owner Actions</h3>
+            <a href="{% url 'team:edit' %}" class="button is-warning">Edit Team</a>
+        </div>
+        {% endif %}
     </div>
     {% endblock %}
