@@ -40,7 +40,7 @@ def edit(request):
             team.title = title
             team.save()
 
-            message.info(request, 'The changes was saved')
+            messages.info(request, 'The changes was saved')
 
             return redirect('team:team', team_id=team.id)
     
