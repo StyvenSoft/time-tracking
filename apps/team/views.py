@@ -12,6 +12,17 @@ def team(request, team_id):
     return render(request, 'team/team.html', {'team': team})
 
 @login_required
+def activate_team(request, team_id):
+    team = get_object_or_404(Team, pk=team_id, status=Team.ACTIVE, members__in=[request.user])
+    userprofile = request.user.userprofile
+    userprofile.active_team_id = team.id
+    userprofile.save()
+
+    messages.info(request, 'The team was activated')
+
+    return redirect('team:team', team_id=team.id)
+
+@login_required
 def add(request):
     if request.method == 'POST':
         title = request.POST.get('title')

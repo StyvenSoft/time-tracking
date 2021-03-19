@@ -41,6 +41,9 @@
                                         <a href="{% url 'edit_profile' %}" class="dropdown-item">
                                           Edit profile
                                         </a>
+                                        <a href="#" class="dropdown-item">
+                                            {% if active_team %} {{ active_team.title }} {% endif %}    
+                                        </a>
                                         <hr class="dropdown-divider">
                                         <a href="{% url 'logout' %}" class="dropdown-item">
                                           Logout
